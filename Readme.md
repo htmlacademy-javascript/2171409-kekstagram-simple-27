@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм (простой)»
 
-* Студент: [Roman Trukhan](https://up.htmlacademy.ru/javascript/27/user/2171409).
-* Наставник: `Неизвестно`.
+- Студент: [Roman Trukhan](https://up.htmlacademy.ru/javascript/27/user/2171409).
+- Наставник: `Геннадий Максимов`.
 
 ---
 
