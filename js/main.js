@@ -9,26 +9,21 @@
 Функция может не гарантировать верный результат, если в переданном диапазоне нет ни одного подходящего числа.
 */
 
-function getRandomIntInclusive(min, max) {
-  if (
-    min < 0 ||
-    max < 0 ||
-    min > max ||
-    !Number.isInteger(min) ||
-    !Number.isInteger(max)
-  ) {
-    console.log(
-      "аргументами функции могут быть только положительные числа и ноль"
-    );
+const getRandomIntInclusive = (min, max) => {
+  if (min < 0 || max < 0 || !Number.isInteger(min) || !Number.isInteger(max)) {
+    // console.log(
+    //   "аргументами функции могут быть только положительные числа и ноль"
+    // );
     return NaN;
+  } else if (min > max) {
+    let num = min;
+    min = max;
+    max = num;
   }
   min = Math.ceil(min);
   max = Math.floor(max);
-  return console.log(Math.floor(Math.random() * (max - min + 1)) + min); //Максимум и минимум включаются
-}
-
-getRandomIntInclusive(1, 52);
-
+  return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+};
 
 /*
 ЗАДАНИЕ №2:
@@ -37,11 +32,9 @@ getRandomIntInclusive(1, 52);
 имя_функции(проверяемая_строка, максимальная_длина); // Результат: true, если строка проходит по длине, и false — если не проходит
 */
 
-function checkMaxLength(text, maxLength) {
+const checkMaxLength = (text, maxLength) => {
   if (text.length >= maxLength) {
     return console.log(true);
   }
   return console.log(false);
-}
-
-checkMaxLength("Привет мир", 11);
+};
