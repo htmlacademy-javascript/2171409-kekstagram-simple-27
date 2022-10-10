@@ -11,9 +11,7 @@
 
 const getRandomIntInclusive = (min, max) => {
   if (min < 0 || max < 0 || !Number.isInteger(min) || !Number.isInteger(max)) {
-    // console.log(
     //   "аргументами функции могут быть только положительные числа и ноль"
-    // );
     return NaN;
   } else if (min > max) {
     let num = min;
@@ -38,3 +36,37 @@ const checkMaxLength = (text, maxLength) => {
   }
   return console.log(false);
 };
+
+/*
+ЗАДАНИЕ №3: Генерация данных
+написать функции для создания массива из 25 сгенерированных объектов. 
+Каждый объект массива — описание фотографии, опубликованной пользователем.
+Структура:
+  +-id, число — идентификатор опубликованной фотографии. Это число от 1 до 25. Идентификаторы не должны повторяться.
+  +-url, строка — адрес картинки вида photos/{{i}}.jpg, где {{i}} — это число от 1 до 25. Адреса картинок не должны повторяться.
+  +-description, строка — описание фотографии. Описание придумайте самостоятельно.
+  +-likes, число — количество лайков, поставленных фотографии. Случайное число от 15 до 200.
+  +-comments, число — количество комментариев, оставленных другими пользователями к этой фотографии. Случайное число от 0 до 200. 
+ */
+
+// Счетчик
+let num = 0;
+const randomId = () => ++num;
+
+const createPhotos = () => {
+  const id = randomId();
+  const randomUrl = "photos/" + id + ".jpg";
+  const description = "Фото номер № " + id;
+  const randomLikes = getRandomIntInclusive(15, 200);
+  const randomComments = getRandomIntInclusive(0, 200);
+
+  return {
+    id: id,
+    url: randomUrl,
+    description: description,
+    likes: randomLikes,
+    comments: randomComments,
+  };
+};
+
+const similarWizards = Array.from({ length: 25 }, createPhotos);
