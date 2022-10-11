@@ -30,12 +30,7 @@ const getRandomIntInclusive = (min, max) => {
 имя_функции(проверяемая_строка, максимальная_длина); // Результат: true, если строка проходит по длине, и false — если не проходит
 */
 
-const checkMaxLength = (text, maxLength) => {
-  if (text.length >= maxLength) {
-    return console.log(true);
-  }
-  return console.log(false);
-};
+const checkMaxLength = (text, maxLength) => text.length >= maxLength;
 
 /*
 ЗАДАНИЕ №3: Генерация данных
@@ -49,14 +44,29 @@ const checkMaxLength = (text, maxLength) => {
   +-comments, число — количество комментариев, оставленных другими пользователями к этой фотографии. Случайное число от 0 до 200. 
  */
 
-// Счетчик
-let num = 0;
-const randomId = () => ++num;
+const MIN = 1; // минимальное значение для генератора
+const MAX = 25; // максимальное значение для генератора или нужное количество значений
+const resultArray = [];
 
+// рандомное значение от MIN до MAX
+const getRandom = (min, max) =>
+  Math.floor(min + Math.random() * (max + 1 - min));
+
+// проверка на повторение
+const checkRepeat = () => {
+  id = getRandom(MIN, MAX);
+  if (resultArray.includes(id)) {
+    return checkRepeat();
+  }
+  resultArray.push(id);
+  return id;
+};
+
+// генератор массива
 const createPhotos = () => {
-  const id = randomId();
-  const randomUrl = "photos/" + id + ".jpg";
-  const description = "Фото номер № " + id;
+  const id = checkRepeat();
+  const randomUrl = `photos/${id}.jpg`;
+  const description = `Фото номер № ${id}`;
   const randomLikes = getRandomIntInclusive(15, 200);
   const randomComments = getRandomIntInclusive(0, 200);
 
@@ -69,4 +79,4 @@ const createPhotos = () => {
   };
 };
 
-const similarWizards = Array.from({ length: 25 }, createPhotos);
+const similarWizards = Array.from({ length: MAX }, createPhotos);
