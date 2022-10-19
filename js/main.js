@@ -1,3 +1,1 @@
-import { similarWizards } from './util.js';
-
-similarWizards();
+import './thumbnail.js';
