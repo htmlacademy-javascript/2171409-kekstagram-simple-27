@@ -1,4 +1,5 @@
-import { DESCRIPTIONS, COMMENTS, CommentsCount, LikesCount, ID_COUNT_MAX } from './data.js';
+import { COMMENTS, CommentsCount } from './consts.js';
+
 /*
 +- аргументами функции могут быть только положительные числа и ноль
 +- Если функции пришли неправильные аргументы, она должна вернуть NaN
@@ -36,18 +37,4 @@ const getComment = () =>
     () => getRandomArrayElement(COMMENTS)
   );
 
-// генератор массива
-const createPhotos = (index) => ({
-  id: index,
-  url: `photos/${index}.jpg`,
-  description: getRandomArrayElement(DESCRIPTIONS),
-  likes: getRandomIntInclusive(LikesCount.MIN, LikesCount.MAX),
-  comments: getComment(),
-});
-
-const similarWizards = () =>
-  Array.from({ length: ID_COUNT_MAX }, (_, photoIndex) =>
-    createPhotos(photoIndex + 1)
-  );
-
-export { similarWizards };
+export { getComment, getRandomArrayElement, getRandomIntInclusive };
