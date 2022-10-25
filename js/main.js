@@ -1,3 +1,5 @@
-import { similarWizards } from './util.js';
+import { initThumbnail } from './thumbnail.js';
+import { getSimilarWizards } from './mock.js';
 
-similarWizards();
+const data = getSimilarWizards();
+initThumbnail(data);
