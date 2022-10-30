@@ -37,4 +37,7 @@ const getComment = () =>
     () => getRandomArrayElement(COMMENTS)
   );
 
-export { getComment, getRandomArrayElement, getRandomIntInclusive };
+// нажатие клавиши ESC
+const isEcapeKey = (evt) => evt.key === 'Escape';
+
+export { getComment, getRandomArrayElement, getRandomIntInclusive, isEcapeKey };
