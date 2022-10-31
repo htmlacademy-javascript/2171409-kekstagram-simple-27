@@ -1,5 +1,12 @@
-import { DESCRIPTIONS, LikesCount, ID_COUNT_MAX } from './consts.js';
-import { getComment, getRandomArrayElement, getRandomIntInclusive } from './util.js';
+import { COMMENTS, CommentsCount, DESCRIPTIONS, LikesCount, ID_COUNT_MAX } from './consts.js';
+import { getRandomArrayElement, getRandomIntInclusive } from './util.js';
+
+// получение комментариев
+const getComment = () =>
+  Array.from(
+    { length: getRandomIntInclusive(CommentsCount.MIN, CommentsCount.MAX) },
+    () => getRandomArrayElement(COMMENTS)
+  );
 
 // генератор массива
 const createPhotos = (index) => ({
