@@ -1,5 +1,3 @@
-import { COMMENTS, CommentsCount } from './consts.js';
-
 /*
 +- аргументами функции могут быть только положительные числа и ноль
 +- Если функции пришли неправильные аргументы, она должна вернуть NaN
@@ -30,11 +28,7 @@ const getRandomIntInclusive = (min, max) => {
 const getRandomArrayElement = (array) =>
   array[getRandomIntInclusive(0, array.length - 1)];
 
-// получение комментариев
-const getComment = () =>
-  Array.from(
-    { length: getRandomIntInclusive(CommentsCount.MIN, CommentsCount.MAX) },
-    () => getRandomArrayElement(COMMENTS)
-  );
+// нажатие клавиши ESC
+const isEcapeKey = (evt) => evt.key === 'Escape';
 
-export { getComment, getRandomArrayElement, getRandomIntInclusive };
+export { getRandomArrayElement, getRandomIntInclusive, isEcapeKey };
