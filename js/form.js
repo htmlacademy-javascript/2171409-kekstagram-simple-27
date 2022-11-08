@@ -1,4 +1,6 @@
 import { isEcapeKey } from './util.js';
+import { initScale } from './scale.js';
+import { initFilter } from './filter.js';
 
 const bodyElement = document.querySelector('body');
 const formElement = document.querySelector('.img-upload__form');
@@ -47,4 +49,6 @@ function onEscKeydown(evt) {
   }
 }
 
+initScale();
+initFilter();
 export { initModal };
