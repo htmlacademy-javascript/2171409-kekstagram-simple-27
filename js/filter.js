@@ -13,4 +13,4 @@ const initFilter = () => {
   });
 };
 
-export { initFilter };
+export { initFilter, imgUploadPreviewElement };
