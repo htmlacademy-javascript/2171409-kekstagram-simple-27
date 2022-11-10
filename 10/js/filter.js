@@ -1,15 +1,14 @@
 const effectsListItem = document.querySelector('.effects__list');
-const imgUploadPreviewElement = document.querySelector('.img-upload__preview img');
+const imgPreviewElement = document.querySelector('.img-upload__preview img');
 
 const clearClass = () => {
-  imgUploadPreviewElement.className = '';
+  imgPreviewElement.className = '';
 };
 
 const initFilter = () => {
-  effectsListItem.addEventListener('click', (evt) => {
-    evt.preventDefault();
+  effectsListItem.addEventListener('change', (evt) => {
     clearClass();
-    imgUploadPreviewElement.classList.add(evt.target.classList[1]);
+    imgPreviewElement.classList.add(`effects__preview--${evt.target.value}`);
   });
 };
 
