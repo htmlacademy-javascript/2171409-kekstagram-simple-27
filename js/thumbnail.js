@@ -3,7 +3,7 @@ const pictureWizardTemplate = document.querySelector('#picture').content.querySe
 
 const createWizardsFragment = document.createDocumentFragment();
 const initThumbnail = (data) => {
-  data.forEach(({url, likes, comments}) => {
+  data.forEach(({ url, likes, comments }) => {
     const wizardElement = pictureWizardTemplate.cloneNode(true);
     wizardElement.querySelector('.picture__img').src = url;
     wizardElement.querySelector('.picture__likes').textContent = likes;

@@ -57,6 +57,8 @@ const FilterName = {
   },
 };
 
+
+
 //Начало выбора фильтра
 const clearClass = () => {
   imgPreviewElement.removeAttribute('class');

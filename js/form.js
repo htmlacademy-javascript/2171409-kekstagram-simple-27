@@ -7,11 +7,14 @@ const formElement = document.querySelector('.img-upload__form');
 const formOverlayElement = formElement.querySelector('.img-upload__overlay');
 const btnCancel = formElement.querySelector('.img-upload__cancel');
 const btnUploadFile = formElement.querySelector('#upload-file');
+const imgPreviewElement = document.querySelector('.img-upload__preview img');
+
 
 const openModal = () => {
   formOverlayElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
   document.addEventListener('keydown', onEscKeydown);
+  imgPreviewElement.src = URL.createObjectURL(btnUploadFile.files[0]) //добавление выбранного изображения
   initPopup();
 };
 
