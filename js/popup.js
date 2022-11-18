@@ -57,6 +57,8 @@ const FilterName = {
   },
 };
 
+
+
 //Начало выбора фильтра
 const clearClass = () => {
   imgPreviewElement.removeAttribute('class');
@@ -64,6 +66,10 @@ const clearClass = () => {
 
 const clearStyle = () => {
   imgPreviewElement.removeAttribute('style');
+};
+
+const clearScaleValue = () => {
+  scaleValueElement.reset();
 };
 
 const onEffectListItemChange = (evt) => {
@@ -174,6 +180,7 @@ const destroyPopup = () => {
   btnBiggerElement.removeEventListener('click', scaleBigger);
   clearClass();
   clearStyle();
+  clearScaleValue();
   sliderElement.noUiSlider.destroy();
 };
 
