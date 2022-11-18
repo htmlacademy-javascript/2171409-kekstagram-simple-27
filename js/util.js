@@ -1,4 +1,4 @@
-const ALERT_SHOW_TIME = 3000;
+import { ALERT_SHOW_TIME } from './consts.js'
 
 /*
 +- аргументами функции могут быть только положительные числа и ноль
@@ -45,9 +45,7 @@ const showAlert = (message) => {
   alertContainer.style.fontSize = '30px';
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'red';
-
   alertContainer.textContent = message;
-
   document.body.append(alertContainer);
 
   setTimeout(() => {

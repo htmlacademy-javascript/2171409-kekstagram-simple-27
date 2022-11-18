@@ -68,6 +68,10 @@ const clearStyle = () => {
   imgPreviewElement.removeAttribute('style');
 };
 
+const clearScaleValue = () => {
+  scaleValueElement.reset();
+};
+
 const onEffectListItemChange = (evt) => {
   imgPreviewElement.classList.add(`effects__preview--${evt.target.value}`);
 };
@@ -176,6 +180,7 @@ const destroyPopup = () => {
   btnBiggerElement.removeEventListener('click', scaleBigger);
   clearClass();
   clearStyle();
+  clearScaleValue();
   sliderElement.noUiSlider.destroy();
 };
 

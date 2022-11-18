@@ -1,9 +1,17 @@
 import { initThumbnail } from './thumbnail.js';
 import { getData, sendData } from './api.js';
-import { initModal } from './form.js';
+import { setOnFormSubmit, closeModal } from './form.js';
 import { showAlert } from './util.js'
-import { showErrorMessage } from './message.js'
+import { showSuccessMessage, showErrorMessage } from './message.js'
 
-initModal();
+const onSendDataSuccess = () => {
+    closeModal();
+    showSuccessMessage();
+}
 
-getData(initThumbnail, showErrorMessage);
+
+setOnFormSubmit(async (body) => {
+    await sendData(onSendDataSuccess, showErrorMessage, body);
+})
+
+getData(initThumbnail, showAlert);

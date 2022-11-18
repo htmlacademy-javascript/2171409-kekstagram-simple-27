@@ -7,7 +7,7 @@ const initThumbnail = (data) => {
     const wizardElement = pictureWizardTemplate.cloneNode(true);
     wizardElement.querySelector('.picture__img').src = url;
     wizardElement.querySelector('.picture__likes').textContent = likes;
-    wizardElement.querySelector('.picture__comments').textContent = comments.length;
+    wizardElement.querySelector('.picture__comments').textContent = comments;
     createWizardsFragment.append(wizardElement);
   });
   picturesList.append(createWizardsFragment);
