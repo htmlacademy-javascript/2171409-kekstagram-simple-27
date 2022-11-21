@@ -1,7 +1,7 @@
-import { initThumbnail } from './thumbnail.js';
-import { getSimilarWizards } from './mock.js';
-import { initModal } from './form.js';
+import { initThumbnails } from './thumbnails.js';
+import { getData } from './api.js';
+import { initLoadPicture } from './load-picture.js';
+import { showAlert } from './util.js';
 
-const data = getSimilarWizards();
-initThumbnail(data);
-initModal();
+initLoadPicture();
+getData(initThumbnails, showAlert);

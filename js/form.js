@@ -1,48 +1,45 @@
-import { isEcapeKey } from './util.js';
 import { pristine } from './validate.js';
-import { initPopup, destroyPopup } from './popup.js';
+import { sendData } from './api.js';
+import { closeEditPictureModal } from './edit-picture.js';
+import { showErrorMessage, showSuccessMessage } from './message.js';
 
-const bodyElement = document.querySelector('body');
 const formElement = document.querySelector('.img-upload__form');
-const formOverlayElement = formElement.querySelector('.img-upload__overlay');
-const btnCancel = formElement.querySelector('.img-upload__cancel');
-const btnUploadFile = formElement.querySelector('#upload-file');
+const submitButton = document.querySelector('#upload-submit');
 
-const openModal = () => {
-  formOverlayElement.classList.remove('hidden');
-  bodyElement.classList.add('modal-open');
-  document.addEventListener('keydown', onEscKeydown);
-  initPopup();
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
 };
 
-const closeModal = () => {
-  formElement.reset();
-  pristine.reset();
-  formOverlayElement.classList.add('hidden');
-  bodyElement.classList.remove('modal-open');
-  document.removeEventListener('keydown', onEscKeydown);
-  destroyPopup();
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
 };
 
-const onBtnUploadFileChenge = () => openModal();
-const onClickBtnCancel = () => closeModal();
-
-const onFormSubmit = (evt) => {
+const onFormElementSubmit = (evt) => {
   evt.preventDefault();
-  pristine.validate();
-};
 
-const initModal = () => {
-  btnUploadFile.addEventListener('change', onBtnUploadFileChenge);
-  btnCancel.addEventListener('click', onClickBtnCancel);
-  formElement.addEventListener('submit', onFormSubmit);
-};
-
-function onEscKeydown(evt) {
-  if (isEcapeKey(evt)) {
-    evt.preventDefault();
-    onClickBtnCancel();
+  if (pristine.validate()) {
+    blockSubmitButton();
+    sendData(
+      () => {
+        closeEditPictureModal();
+        showSuccessMessage();
+      },
+      () => {
+        showErrorMessage();
+      },
+      new FormData(formElement),
+    );
   }
-}
+};
 
-export { initModal };
+const destroyForm = () => {
+  formElement.reset();
+  unblockSubmitButton();
+  formElement.removeEventListener('submit', onFormElementSubmit);
+};
+
+const initForm = () => {
+  formElement.addEventListener('submit', onFormElementSubmit);
+};
+
+export { initForm, destroyForm, unblockSubmitButton };
