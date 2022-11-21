@@ -1,36 +1,33 @@
+const URL_GET = 'https://27.javascript.pages.academy/kekstagram/data';
+const URL_POST = 'https://27.javascript.pages.academy/kekstagram-simple';
+
 const getData = async (onSuccess, onFail) => {
   try {
-    const response = await fetch('https://27.javascript.pages.academy/kekstagram-simple/data');
+    const response = await fetch(URL_GET);
     if (!response.ok) {
       throw new Error('Не удалось загрузить фото');
-    };
+    }
     const photos = await response.json();
     onSuccess(photos);
   } catch (error) {
-    onFail(error.message)
+    onFail(error.message);
   }
 };
 
-const sendData = async (onSuccess, onFail, body) => {
-
-
-  // .then(body => console.log(body))
-  // try {
-  //   const response = await fetch('https://27.javascript.pages.academy/kekstagram-simple', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'multipart/form-data'
-  //     },
-  //     body,
-  //   });
-  //   if (response.ok) {
-  //     onSuccess(response);
-  //   } else {
-  //     onFail('Не удалось отправить форму. Попробуйте ещё раз');
-  //   }
-  // } catch {
-  //   onFail('Не удалось отправить форму. Попробуйте ещё раз');
-  // };
-}
+const sendData = async (onSuccess, onFail, data) => {
+  try {
+    const response = await fetch(URL_POST, {
+      method: 'POST',
+      body: data,
+    });
+    if (response.ok) {
+      onSuccess();
+    } else {
+      onFail();
+    }
+  } catch (error) {
+    onFail(error.message);
+  }
+};
 
 export { getData, sendData };

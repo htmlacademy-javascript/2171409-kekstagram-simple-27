@@ -1,17 +1,7 @@
-import { initThumbnail } from './thumbnail.js';
-import { getData, sendData } from './api.js';
-import { setOnFormSubmit, closeModal } from './form.js';
-import { showAlert } from './util.js'
-import { showSuccessMessage, showErrorMessage } from './message.js'
+import { initThumbnails } from './thumbnails.js';
+import { getData } from './api.js';
+import { initLoadPicture } from './load-picture.js';
+import { showAlert } from './util.js';
 
-const onSendDataSuccess = () => {
-    closeModal();
-    showSuccessMessage();
-}
-
-
-setOnFormSubmit(async (body) => {
-    await sendData(onSendDataSuccess, showErrorMessage, body);
-})
-
-getData(initThumbnail, showAlert);
+initLoadPicture();
+getData(initThumbnails, showAlert);

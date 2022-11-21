@@ -1,4 +1,4 @@
-import { ALERT_SHOW_TIME } from './consts.js'
+import { ALERT_SHOW_TIME } from './consts.js';
 
 /*
 +- аргументами функции могут быть только положительные числа и ноль
@@ -31,7 +31,7 @@ const getRandomArrayElement = (array) =>
   array[getRandomIntInclusive(0, array.length - 1)];
 
 // нажатие клавиши ESC
-const isEcapeKey = (evt) => evt.key === 'Escape';
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
 //сообщение об ошибке
 const showAlert = (message) => {
@@ -51,6 +51,6 @@ const showAlert = (message) => {
   setTimeout(() => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);
-}
+};
 
-export { getRandomArrayElement, getRandomIntInclusive, isEcapeKey, showAlert };
+export { getRandomArrayElement, getRandomIntInclusive, isEscapeKey, showAlert };
