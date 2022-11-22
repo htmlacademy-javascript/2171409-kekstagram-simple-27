@@ -2,19 +2,6 @@ import { destroyForm } from './form.js';
 import { isEscapeKey } from './util.js';
 import { pristine } from './validate.js';
 
-const imgPreviewElement = document.querySelector('.img-upload__preview img');
-
-const formElement = document.querySelector('.img-upload__form');
-const formOverlayElement = formElement.querySelector('.img-upload__overlay');
-const btnCancelElement = formElement.querySelector('.img-upload__cancel');
-const btnSmallerElement = formElement.querySelector('.scale__control--smaller');
-const btnBiggerElement = formElement.querySelector('.scale__control--bigger');
-const scaleValueElement = formElement.querySelector('.scale__control--value');
-const sliderContainerElement = formElement.querySelector('.effect-level');
-const sliderInputElement = formElement.querySelector('.effect-level__slider');
-const effectsElement = formElement.querySelector('.effects__list');
-const levelEffectElement = formElement.querySelector('.effect-level__value');
-
 const Scale = {
   MIN: 25,
   MAX: 100,
@@ -85,6 +72,19 @@ const filterName = {
     step: 0.1
   },
 };
+
+const imgPreviewElement = document.querySelector('.img-upload__preview img');
+
+const formElement = document.querySelector('.img-upload__form');
+const formOverlayElement = formElement.querySelector('.img-upload__overlay');
+const btnCancelElement = formElement.querySelector('.img-upload__cancel');
+const btnSmallerElement = formElement.querySelector('.scale__control--smaller');
+const btnBiggerElement = formElement.querySelector('.scale__control--bigger');
+const scaleValueElement = formElement.querySelector('.scale__control--value');
+const sliderContainerElement = formElement.querySelector('.effect-level');
+const sliderInputElement = formElement.querySelector('.effect-level__slider');
+const effectsElement = formElement.querySelector('.effects__list');
+const levelEffectElement = formElement.querySelector('.effect-level__value');
 
 const blockedSlider = () => {
   sliderContainerElement.style.display = 'none';
